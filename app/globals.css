@@ -29,6 +29,7 @@ body {
 }
 
 
+<<<<<<< HEAD
 html,
 body {
   height: 100%;
@@ -38,3 +39,8 @@ body {
   overflow-y: auto;   /* ✅ allow scroll */
 }
 
+=======
+html, body {
+  overflow-x: hidden;
+}
+>>>>>>> 5fe317a2a240799c4ddf2058c2b88f7093cd2e2f
