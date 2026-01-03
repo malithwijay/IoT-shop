@@ -27,10 +27,7 @@ function NavLink({ href, label }: { href: string; label: string }) {
 
 export default function Navbar() {
   const router = useRouter();
-<<<<<<< HEAD
-=======
   const pathname = usePathname();
->>>>>>> 5fe317a2a240799c4ddf2058c2b88f7093cd2e2f
 
   const [email, setEmail] = useState<string | null>(null);
   const [menuOpen, setMenuOpen] = useState(false);
@@ -95,15 +92,10 @@ export default function Navbar() {
   };
 
   return (
-<<<<<<< HEAD
-    <header className="sticky top-0 z-50 bg-white/80 backdrop-blur border-b border-gray-200">
-      <nav className="w-full px-6 lg:px-12 py-4 flex items-center justify-between">
-=======
     <header className="sticky top-0 z-50 w-full border-b bg-white/80 backdrop-blur">
       {/* FULL WIDTH BAR */}
       <nav className="w-full h-[64px] flex items-center px-6">
         {/* LEFT */}
->>>>>>> 5fe317a2a240799c4ddf2058c2b88f7093cd2e2f
         <Link href="/" className="flex items-center gap-2">
           <div className="h-9 w-9 rounded-xl bg-black text-white flex items-center justify-center font-bold">
             IoT
@@ -114,10 +106,7 @@ export default function Navbar() {
           </div>
         </Link>
 
-<<<<<<< HEAD
-=======
         {/* CENTER */}
->>>>>>> 5fe317a2a240799c4ddf2058c2b88f7093cd2e2f
         <div className="ml-10 hidden md:flex items-center gap-1">
           <NavLink href="/products" label="Products" />
           <NavLink href="/cart" label={`Cart (${cartCount})`} />
@@ -125,10 +114,7 @@ export default function Navbar() {
           {isAdmin && <NavLink href="/admin" label="Admin" />}
         </div>
 
-<<<<<<< HEAD
-=======
         {/* RIGHT */}
->>>>>>> 5fe317a2a240799c4ddf2058c2b88f7093cd2e2f
         <div className="ml-auto relative">
           {!email ? (
             <div className="flex gap-2">
