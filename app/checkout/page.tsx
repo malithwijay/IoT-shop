@@ -28,7 +28,8 @@ export default function CheckoutPage() {
   );
 
   // Simple for now
-  const shipping = items.length > 0 ? 0 : 0;
+  const shipping: number = items.length > 0 ? 0 : 0;
+
   const tax = 0;
   const total = subtotal + shipping + tax;
 

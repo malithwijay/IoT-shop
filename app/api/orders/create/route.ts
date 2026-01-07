@@ -4,11 +4,11 @@ import { supabaseAdmin } from "@/lib/supabase/server";
 export async function POST(req: Request) {
   try {
     const body = await req.json();
-    const { items, shipping, currency } = body as {
+    const { items, shipping, currency, userId } = body as {
       items: { id: string; title: string; price: number; qty: number }[];
       shipping: { name: string; phone: string; address: string };
-      currency: string;
-      userId: string;
+      currency?: string;
+      userId?: string;
     };
 
     if (!items?.length) {
@@ -17,11 +17,10 @@ export async function POST(req: Request) {
 
     const total = items.reduce((sum, x) => sum + Number(x.price) * Number(x.qty), 0);
 
-    // For now, user_id is optional (null) unless you want to pass auth user id
     const { data: order, error: orderErr } = await supabaseAdmin
       .from("orders")
       .insert({
-        user_id: userId,
+        user_id: userId ?? null, // ✅ optional
         status: "pending",
         total,
         currency: currency || "USD",
@@ -42,9 +41,7 @@ export async function POST(req: Request) {
       title_snapshot: x.title,
     }));
 
-    const { error: itemsErr } = await supabaseAdmin
-      .from("order_items")
-      .insert(orderItems);
+    const { error: itemsErr } = await supabaseAdmin.from("order_items").insert(orderItems);
 
     if (itemsErr) {
       return NextResponse.json({ error: itemsErr.message }, { status: 500 });

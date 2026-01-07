@@ -24,7 +24,8 @@ export default function CartPage() {
   );
 
   // For now: simple values (you can connect later)
-  const shipping = items.length > 0 ? 0 : 0;
+  const shipping: number = items.length > 0 ? 0 : 0;
+
   const tax = 0;
   const total = subtotal + shipping + tax;
 
